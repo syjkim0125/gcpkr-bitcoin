@@ -38,7 +38,7 @@ with open(now+'.csv', 'a') as f:
                 if elapsed_time < window:
                         time.sleep(window-elapsed_time)
                         window = 3
-                else if elapsed_time == window:
+                elif elapsed_time == window:
                         pass
                 else:
                         time_minus = elapsed_time - window
