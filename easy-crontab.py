@@ -10,3 +10,8 @@ job = my_cron.new(command='python /home/Tora/MyScripts/for_test.py') # example p
 job.minute.every(1)
 
 my_cron.write()
+
+# if you want to check your crontask,
+# cat /var/log/syslog | grep for_test.py -> example file_name
+# or crontab -l -> crontab list
+# just fix -> crontab -e
