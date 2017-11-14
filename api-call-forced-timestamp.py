@@ -12,6 +12,8 @@ now = datetime.datetime.now().strftime("%Y%m%d%H") # current day
 file_exists = os.path.isfile(now+'.csv') # file_name exists check
 #timestamp = datetime.datetime.now().strftime("%Y%m%d%H%M%S") # current timestamp
 timestamp = datetime.datetime.now()
+timestamp = timestamp.replace(second = 1)
+
 with open(now+'.csv', 'a') as f:
         fieldnames = ['traded_at', 'open', 'high', 'low', 'close'] # column name
         writer = csv.DictWriter(f, fieldnames = fieldnames, delimiter = ',', lineterminator='\n')
