@@ -1,0 +1,35 @@
+in:
+  type: gcs
+  bucket: gcpkr-bitcoin-keras
+  path_prefix: preprocess/2017
+  auth_method: private_key #default
+  service_account_email: gcpkr-bitcoin@gcpkr-bitcoin.iam.gserviceaccount.com
+  p12_keyfile: /home/Tora/embulk/key_file.p12
+  application_name: Tora
+  parser:
+    charset: UTF-8
+    newline: LF
+    type: csv
+    delimiter: ','
+    quote: '"'
+    escape: '"'
+    null_string: 'NULL'
+    trim_if_not_quoted: false
+    skip_header_lines: 1
+    allow_extra_columns: false
+    allow_optional_columns: false
+    columns:
+    - {name: traded_at, type: long}
+    - {name: open, type: double}
+    - {name: high, type: double}
+    - {name: low, type: double}
+    - {name: close, type: double}
+out:
+   type: mysql
+   host: 35.200.98.245
+   port: 3306
+   user: gitcoin
+   password: gitcoin
+   database: gitcoin
+   table: tickers
+   mode: merge_direct
